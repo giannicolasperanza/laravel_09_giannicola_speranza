@@ -7,7 +7,17 @@
 
         <div class="row justify-content-center">
             <div class="col-12 col-md-8" >
-                <form method="POST"  action="{{route('article.submit')}}">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                    </ul>
+                    </div>
+                @endif
+                
+                <form method="POST"  action="{{route('article.submit')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label">Titolo: </label>
@@ -21,6 +31,11 @@
                     <label for="price" class="form-label">Prezzo: </label>
                     <input type="text" name="price" class="form-control" id="exampleFormControlInput2" placeholder="Prezzo">
                 </div>
+                <div class="mb-3">
+                    <label for="img" class="form-label">Inserisci immagine </label>
+                    <input type="file" name="img" class="form-control" id="img" placeholder="Prezzo">
+                </div>
+
 
                 <button type="submit" class="btn btn-primary"> Inserisci il tuo articolo</button>
                 </form>

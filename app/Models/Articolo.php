@@ -12,6 +12,6 @@ class Articolo extends Model
     protected $table = 'articoli';
     
     protected $fillable = [
-        'titolo', 'descrizione','prezzo',
+        'titolo', 'descrizione','prezzo','img'
     ];
 }

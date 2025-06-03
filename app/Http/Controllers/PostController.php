@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticoloRequest;
 use App\Models\Articolo;
 use Illuminate\Http\Request;
 
@@ -65,12 +66,13 @@ class PostController extends Controller
     }
 
 
-    public function store(Request $request){
+    public function store(ArticoloRequest $request){
     
        $articolo = Articolo::create([
         'titolo'=> $request->title ,
         'descrizione'=> $request->description,
-        'prezzo'=> $request->price
+        'prezzo'=> $request->price,
+        'img' => $request->file('img')->store('/img')
        ]);
 
        
