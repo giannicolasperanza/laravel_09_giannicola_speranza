@@ -16,5 +16,5 @@ Route::get('/articleDetail/{id}', [PostController::class, 'dettaglio'])->name('a
 
 
 // CREAZIONE ARTICOLI
-Route::get('/article/create', [PostController::class, 'create'])->name('article.create');
-Route::post('/article/submit', [PostController::class, 'store'])->name('article.submit');
+Route::get('/article/create', [PostController::class, 'create'])->name('article.create')->middleware('auth');
+Route::post('/article/submit', [PostController::class, 'store'])->name('article.submit')->middleware('auth');
